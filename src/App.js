@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState } from "react";
 import axios from "axios";
 import WeatherCard from "./components/WeatherCard";
@@ -16,7 +17,9 @@ function App() {
     setLoading(true);
     try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+          city
+        )}&appid=${apiKey}&units=metric`
       );
       setWeather(res.data);
     } catch (err) {
@@ -28,27 +31,39 @@ function App() {
 
   return (
     <div className="app">
-      <div className="title-container">
-        <h1>WanderWise</h1>
-      </div>
+      {/* Glassmorphism Header */}
+      <header className="app-header glass">
+        <h1>🌍 WanderWise</h1>
+        <p>Your personal travel and weather guide</p>
+      </header>
 
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Enter a city..."
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <button onClick={fetchWeather}>Search</button>
-      </div>
+     <div className="main-container">
+  {/* Search Bar */}
+  <div className="search">
+    <input
+      type="text"
+      placeholder="Enter a city..."
+      value={city}
+      onChange={(e) => setCity(e.target.value)}
+    />
+    <button onClick={fetchWeather}>Search</button>
+  </div>
 
-      {loading && <p>Loading...</p>}
-      {weather && <WeatherCard weather={weather} />}
-
-      <h2 className="chatbot-name">Wander Buddy</h2>
-      <ChatBox apiKey={apiKey} />
+  {/* Weather Info */}
+  {loading && <p>Loading...</p>}
+  {weather && (
+    <div className="weather-card-wrapper">
+      <WeatherCard weather={weather} />
     </div>
-  );
+  )}
+
+  {/* Chatbot */}
+  <div className="chatbox-wrapper">
+    <ChatBox />
+  </div>
+</div>
+
+    </div>);
 }
 
 export default App;

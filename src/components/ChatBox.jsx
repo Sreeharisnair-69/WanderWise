@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+// src/components/ChatBox.jsx
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import cityCodes from "../cityCodes.json";
 import "./ChatBox.css";
+import cityCodes from "../cityCodes.json";
 
 function ChatBox() {
   const [messages, setMessages] = useState([
@@ -10,12 +11,20 @@ function ChatBox() {
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
 
-  const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-
-  // Auto-scroll to the latest message
-  useEffect(() => {
+  // Auto scroll to latest message
+  const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  };
+  useEffect(scrollToBottom, [messages]);
+
+  // Normalize user input to match cityCodes keys
+  const normalizeCity = (city) => {
+    return city
+      .toLowerCase()
+      .replace(/\./g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -24,55 +33,53 @@ function ChatBox() {
     setMessages((prev) => [...prev, userMsg]);
 
     let botReply = "Sorry, I didn’t understand that.";
+    const lowerInput = input.toLowerCase();
 
-    const text = input.toLowerCase();
-
-    // WEATHER QUERY
-    if (text.includes("weather")) {
+    // --- Weather Query ---
+    if (lowerInput.includes("weather")) {
       try {
-        // Extract city name after 'weather in'
-        const city = input.split("weather in")[1]?.trim();
-        if (city) {
-          const res = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-              city
-            )}&appid=${apiKey}&units=metric`
-          );
-          botReply = `🌤 The weather in ${res.data.name} is ${res.data.main.temp}°C, ${res.data.weather[0].description}.`;
+        const match = lowerInput.match(/weather in (.+)/);
+        const cityRaw = match?.[1]?.trim();
+        if (cityRaw) {
+          const cityKey = normalizeCity(cityRaw);
+          const res = await axios.get(`/api/weather/${encodeURIComponent(cityKey)}`);
+          botReply = `The weather in ${res.data.name} is ${res.data.main.temp}°C, ${res.data.weather[0].description}.`;
         } else {
           botReply = "Please specify a city (e.g., 'weather in Paris').";
         }
       } catch (err) {
+        console.error("Weather error:", err.response?.data || err.message);
         botReply = "I couldn’t fetch the weather. Try another city!";
       }
     }
 
-    // TRAVEL QUERY
-    else if (text.includes("travel")) {
-      // Extract city after 'from'
-      let cityName = input.split("from")[1]?.trim().toLowerCase();
-      if (cityName && cityCodes[cityName]) {
-        const originCode = cityCodes[cityName];
-        try {
-          const res = await axios.get(
-            `http://localhost:5000/api/travel/${originCode}`
-          );
+    // --- Travel Query ---
+    else if (lowerInput.includes("travel from")) {
+      try {
+        const match = lowerInput.match(/travel from (.+)/);
+        const userCityRaw = match?.[1]?.trim();
+        if (!userCityRaw) {
+          botReply = "Please specify a city (e.g., 'travel from London').";
+        } else {
+          const userCityKey = normalizeCity(userCityRaw);
+          const cityCode = cityCodes[userCityKey];
 
-          if (Array.isArray(res.data) && res.data.length > 0) {
-            const destinations = res.data
-              .map((d) => d.destination)
-              .filter(Boolean)
-              .slice(0, 5);
-            botReply = `✈ Top destinations from ${cityName} (${originCode}): ${destinations.join(", ")}`;
+          if (!cityCode) {
+            botReply = `Sorry, I don’t have travel info for ${userCityRaw}.`;
           } else {
-            botReply = `I couldn’t find travel suggestions for ${cityName}.`;
+            const travelRes = await axios.get(`/api/travel/${encodeURIComponent(userCityKey)}`);
+            if (travelRes.data?.data?.length) {
+              botReply = `Top destinations from ${userCityRaw}: ${travelRes.data.data
+                .map((d) => d.destination)
+                .join(", ")}`;
+            } else {
+              botReply = `No travel info found for ${userCityRaw}.`;
+            }
           }
-        } catch (err) {
-          console.error(err);
-          botReply = "Error fetching travel info. Try another city.";
         }
-      } else {
-        botReply = "Please provide a valid city name (e.g., 'travel from London').";
+      } catch (err) {
+        console.error("Travel error:", err.response?.data || err.message);
+        botReply = "Error fetching travel info. Try another city.";
       }
     }
 
@@ -88,7 +95,7 @@ function ChatBox() {
             {msg.text}
           </div>
         ))}
-        <div ref={messagesEndRef}></div>
+        <div ref={messagesEndRef} />
       </div>
       <div className="input-box">
         <input
@@ -96,7 +103,7 @@ function ChatBox() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask me something..."
-          onKeyPress={(e) => e.key === "Enter" && handleSend()}
+          onKeyDown={(e) => e.key === "Enter" && handleSend()}
         />
         <button onClick={handleSend}>Send</button>
       </div>
