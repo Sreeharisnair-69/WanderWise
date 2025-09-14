@@ -6,22 +6,8 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-
-// Configure CORS for Vercel deployment
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://weather-travel-buddy.vercel.app', 'https://wanderwise.vercel.app'] 
-    : 'http://localhost:3000',
-  methods: ['GET', 'POST'],
-  credentials: true
-}));
-
+app.use(cors());
 app.use(express.json());
-
-// Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'build')));
-}
 
 // Load city codes
 const cityCodesPath = path.join(__dirname, "src", "cityCodes.json");
