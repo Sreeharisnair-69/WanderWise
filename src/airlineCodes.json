@@ -4,10 +4,6 @@
   "british air": "BA",
   "british": "BA",
   
-  "IB": "IB",
-  "iberia": "IB",
-  "iberia airlines": "IB",
-  
   "LH": "LH",
   "lufthansa": "LH",
   "lufthansa airlines": "LH",
@@ -63,30 +59,12 @@
   "OS": "OS",
   "austrian": "OS",
   "austrian airlines": "OS",
-  
-  "SK": "SK",
-  "sas": "SK",
-  "scandinavian airlines": "SK",
-  
-  "AY": "AY",
-  "finnair": "AY",
-  "finnair airlines": "AY",
+
   
   "VS": "VS",
   "virgin atlantic": "VS",
   "virgin": "VS",
   
-  "FR": "FR",
-  "ryanair": "FR",
-  "ryan air": "FR",
-  
-  "U2": "U2",
-  "easyjet": "U2",
-  "easy jet": "U2",
-  
-  "W6": "W6",
-  "wizz air": "W6",
-  "wizz": "W6",
   
   "NH": "NH",
   "ana": "NH",
@@ -256,9 +234,6 @@
   "norwegian air shuttle": "DY",
   "norwegian shuttle": "DY",
   
-  "WF": "WF",
-  "wideroe": "WF",
-  "wideroe airlines": "WF",
   
   "SK": "SK",
   "sas": "SK",
@@ -274,9 +249,6 @@
   
   "WF": "WF",
   "wideroe": "WF",
-  "wideroe airlines": "WF",
-  
-  "WF": "WF",
-  "wideroe": "WF",
   "wideroe airlines": "WF"
+  
 }

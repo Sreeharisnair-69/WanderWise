@@ -36,15 +36,6 @@ try {
   console.error("Failed to load airlineCodes.json:", err.message);
 }
 
-// Load capital cities
-const capitalCitiesPath = path.join(__dirname, "src", "capitalCities.json");
-let capitalCities = {};
-try {
-  capitalCities = JSON.parse(fs.readFileSync(capitalCitiesPath, "utf-8"));
-} catch (err) {
-  console.error("Failed to load capitalCities.json:", err.message);
-}
-
 // Environment variables
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const AMADEUS_CLIENT_ID = process.env.AMADEUS_CLIENT_ID;

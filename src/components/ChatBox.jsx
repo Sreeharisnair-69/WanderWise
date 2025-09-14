@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./ChatBox.css";
 import cityCodes from "../cityCodes.json";
-import capitalCities from "../capitalCities.json";
 
 function ChatBox() {
   const [messages, setMessages] = useState([
@@ -226,28 +225,7 @@ function ChatBox() {
       return;
     }
 
-    // --- Capital City Recognition ---
-    else if (lowerInput.includes("capital") || lowerInput.includes("what is") || lowerInput.includes("where is")) {
-      const isCapitalCity = Object.values(capitalCities).some(capital => 
-        lowerInput.includes(capital.toLowerCase()) || lowerInput.includes(capital.toLowerCase().replace(/\s+/g, ''))
-      );
-      
-      if (isCapitalCity) {
-        const matchedCapital = Object.values(capitalCities).find(capital => 
-          lowerInput.includes(capital.toLowerCase()) || lowerInput.includes(capital.toLowerCase().replace(/\s+/g, ''))
-        );
-        const country = Object.keys(capitalCities).find(country => 
-          capitalCities[country].toLowerCase() === matchedCapital.toLowerCase()
-        );
-        
-        setMessages((prev) => [...prev, { 
-          sender: "bot", 
-          text: `🏛️ ${matchedCapital} is the capital of ${country}! I can help you with:\n• Weather in ${matchedCapital}\n• Travel from ${matchedCapital}\n• Hotels in ${matchedCapital}\n• Airline check-in links` 
-        }]);
-        return;
-      }
-    }
-
+  
     // --- Default fallback ---
     setMessages((prev) => [...prev, { sender: "bot", text: "I can help you with:\n• Weather information (e.g., 'weather in London')\n• Travel destinations (e.g., 'travel from Paris')\n• Hotel information (e.g., 'hotels in Tokyo')\n• Airline check-in links (e.g., 'check in for BA')\n• Capital city information (e.g., 'what is the capital of France?')" }]);
   };
