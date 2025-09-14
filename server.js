@@ -6,8 +6,22 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-app.use(cors());
+
+// Configure CORS for Vercel deployment
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://weather-travel-buddy.vercel.app', 'https://wanderwise.vercel.app'] 
+    : 'http://localhost:3000',
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
 app.use(express.json());
+
+// Serve static files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'build')));
+}
 
 // Load city codes
 const cityCodesPath = path.join(__dirname, "src", "cityCodes.json");
@@ -50,6 +64,12 @@ const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const AMADEUS_CLIENT_ID = process.env.AMADEUS_CLIENT_ID;
 const AMADEUS_CLIENT_SECRET = process.env.AMADEUS_CLIENT_SECRET;
 
+// Validate required environment variables
+if (!WEATHER_API_KEY) {
+  console.error("ERROR: WEATHER_API_KEY is required in .env file");
+  process.exit(1);
+}
+
 
 // Helper: get Amadeus access token
 const getAmadeusToken = async () => {
@@ -82,19 +102,25 @@ app.get("/api/weather/:city", async (req, res) => {
   }
 
   try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-      city
-    )}&appid=${WEATHER_API_KEY}&units=metric`;
+    const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+    const url = `${baseUrl}?q=${encodeURIComponent(city)}&appid=${WEATHER_API_KEY}&units=metric`;
     
-    console.log("Calling weather API:", url.replace(WEATHER_API_KEY, 'HIDDEN')); // Debug URL
+    console.log("Calling weather API for city:", city); // Debug URL without exposing full URL
 
-    const weatherRes = await axios.get(url);
+    const weatherRes = await axios.get(url, {
+      timeout: 5000, // 5 second timeout
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
     
     if (!weatherRes.data) {
       throw new Error("No data received from weather API");
     }
 
-    console.log("Weather API response:", weatherRes.data); // Debug response
+    // Log successful response without sensitive data
+    console.log("Weather API response received for:", city);
     res.json(weatherRes.data);
   } catch (err) {
     const errorMessage = err.response?.data?.message || err.message;
