@@ -1,8 +1,12 @@
 // src/App.js
 import React, { useState } from "react";
 import axios from "axios";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import ChatBox from "./components/ChatBox";
+import FeatureShowcase from "./components/FeatureShowcase";
+import LoadingSpinner from "./components/LoadingSpinner";
 import "./App.css";
 
 function App() {
@@ -10,17 +14,11 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-
   const fetchWeather = async () => {
     if (!city) return;
     setLoading(true);
     try {
-      const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-          city
-        )}&appid=${apiKey}&units=metric`
-      );
+      const res = await axios.get(`/api/weather/${encodeURIComponent(city)}`);
       setWeather(res.data);
     } catch (err) {
       console.error(err.response?.data || err.message);
@@ -31,39 +29,32 @@ function App() {
 
   return (
     <div className="app">
-      {/* Glassmorphism Header */}
-      <header className="app-header glass">
-        <h1>🌍 WanderWise</h1>
-        <p>Your personal travel and weather guide</p>
-      </header>
+      <Header />
+      
+      <div className="main-container">
+        <SearchBar 
+          city={city} 
+          setCity={setCity} 
+          fetchWeather={fetchWeather} 
+          loading={loading} 
+        />
 
-     <div className="main-container">
-  {/* Search Bar */}
-  <div className="search">
-    <input
-      type="text"
-      placeholder="Enter a city..."
-      value={city}
-      onChange={(e) => setCity(e.target.value)}
-    />
-    <button onClick={fetchWeather}>Search</button>
-  </div>
+        {loading && <LoadingSpinner message="Fetching weather data..." />}
+        
+        {weather && (
+          <div className="weather-card-wrapper">
+            <WeatherCard weather={weather} />
+          </div>
+        )}
 
-  {/* Weather Info */}
-  {loading && <p>Loading...</p>}
-  {weather && (
-    <div className="weather-card-wrapper">
-      <WeatherCard weather={weather} />
+        <FeatureShowcase />
+
+        <div className="chatbox-wrapper">
+          <ChatBox />
+        </div>
+      </div>
     </div>
-  )}
-
-  {/* Chatbot */}
-  <div className="chatbox-wrapper">
-    <ChatBox />
-  </div>
-</div>
-
-    </div>);
+  );
 }
 
 export default App;

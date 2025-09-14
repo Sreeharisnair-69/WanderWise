@@ -3,22 +3,16 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "./ChatBox.css";
 import cityCodes from "../cityCodes.json";
+import capitalCities from "../capitalCities.json";
 
 function ChatBox() {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi! I'm Wander Buddy. Ask me about travel or weather 🌍" },
+    { sender: "bot", text: "Hi! I'm Wander Buddy. Ask me about travel, weather, or airline check-in 🌍✈️" },
   ]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
 
-  // Auto scroll to latest message
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-  useEffect(scrollToBottom, [messages]);
-
-  // Normalize user input to match cityCodes keys
-  const normalizeCity = (city) => {
+    const normalizeCity = (city) => {
     return city
       .toLowerCase()
       .replace(/\./g, "")
@@ -26,65 +20,236 @@ function ChatBox() {
       .trim();
   };
 
+  // Auto scroll
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(scrollToBottom, [messages]);
+
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMsg = { sender: "user", text: input };
-    setMessages((prev) => [...prev, userMsg]);
-
-    let botReply = "Sorry, I didn’t understand that.";
-    const lowerInput = input.toLowerCase();
+    const userMessage = input.trim();
+    const lowerInput = userMessage.toLowerCase();
+    
+    // Add user message and clear input
+    setMessages((prev) => [...prev, { sender: "user", text: userMessage }]);
+    setInput("");
 
     // --- Weather Query ---
-    if (lowerInput.includes("weather")) {
+    if (/weather in (.+)/i.test(userMessage)) {
+      const match = userMessage.match(/weather in (.+)/i);
+      const city = normalizeCity(match?.[1] || "");
+
+      if (!city) {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "⚠️ Please provide a valid city." },
+        ]);
+        return;
+      }
+
+      // ✅ Send city name (not IATA code) to server
       try {
-        const match = lowerInput.match(/weather in (.+)/);
-        const cityRaw = match?.[1]?.trim();
-        if (cityRaw) {
-          const cityKey = normalizeCity(cityRaw);
-          const res = await axios.get(`/api/weather/${encodeURIComponent(cityKey)}`);
-          botReply = `The weather in ${res.data.name} is ${res.data.main.temp}°C, ${res.data.weather[0].description}.`;
+        const res = await axios.get(`/api/weather/${encodeURIComponent(city)}`);
+        
+        if (res.data && res.data.name) {
+          const weather = res.data;
+          const weatherText = `🌤️ Weather in ${weather.name}, ${weather.sys.country}:
+🌡️ Temperature: ${weather.main.temp}°C
+☁️ Condition: ${weather.weather[0].main} - ${weather.weather[0].description}
+💨 Wind: ${weather.wind.speed} m/s
+💧 Humidity: ${weather.main.humidity}%`;
+          
+          setMessages((prev) => [...prev, { sender: "bot", text: weatherText }]);
         } else {
-          botReply = "Please specify a city (e.g., 'weather in Paris').";
+          setMessages((prev) => [...prev, { sender: "bot", text: "❌ Weather data not found for this city." }]);
         }
       } catch (err) {
         console.error("Weather error:", err.response?.data || err.message);
-        botReply = "I couldn’t fetch the weather. Try another city!";
+        setMessages((prev) => [...prev, { sender: "bot", text: "❌ Error fetching weather data. Please try another city." }]);
       }
+      return;
     }
 
     // --- Travel Query ---
-    else if (lowerInput.includes("travel from")) {
-      try {
-        const match = lowerInput.match(/travel from (.+)/);
-        const userCityRaw = match?.[1]?.trim();
-        if (!userCityRaw) {
-          botReply = "Please specify a city (e.g., 'travel from London').";
-        } else {
-          const userCityKey = normalizeCity(userCityRaw);
-          const cityCode = cityCodes[userCityKey];
+    else if (/travel from (.+)/i.test(userMessage)) {
+      const match = userMessage.match(/travel from (.+)/i);
+      const rawCity = normalizeCity(match?.[1] || "");
 
-          if (!cityCode) {
-            botReply = `Sorry, I don’t have travel info for ${userCityRaw}.`;
-          } else {
-            const travelRes = await axios.get(`/api/travel/${encodeURIComponent(userCityKey)}`);
-            if (travelRes.data?.data?.length) {
-              botReply = `Top destinations from ${userCityRaw}: ${travelRes.data.data
-                .map((d) => d.destination)
-                .join(", ")}`;
-            } else {
-              botReply = `No travel info found for ${userCityRaw}.`;
-            }
+      if (!rawCity) {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "⚠️ Please provide a valid city (e.g., 'travel from London')." },
+        ]);
+        return;
+      }
+
+      // Convert to IATA code using cityCodes.json
+      const cityCode = cityCodes[rawCity.toLowerCase()];
+      if (!cityCode) {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: `❌ Sorry, I don't have travel info for ${rawCity}.` },
+        ]);
+        return;
+      }
+
+      try {
+        const res = await axios.get(`/api/travel/${encodeURIComponent(rawCity.toLowerCase())}`);
+
+        if (res.data?.data?.length) {
+          const destinations = res.data.data.map((d) => d.destination);
+          const topDestinations = destinations.slice(0, 10).join(", ");
+          const totalCount = destinations.length;
+          const source = res.data.meta?.source || "API";
+          
+          let message = `✈️ Top destinations from ${rawCity} (${totalCount} total):\n${topDestinations}`;
+          if (totalCount > 10) {
+            message += `\n... and ${totalCount - 10} more destinations!`;
           }
+          if (source === "static_data") {
+            message += `\n\n📊 Data source: Comprehensive travel database`;
+          }
+          
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: message },
+          ]);
+        } else {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: `⚠️ No travel info found for ${rawCity}.` },
+          ]);
         }
       } catch (err) {
         console.error("Travel error:", err.response?.data || err.message);
-        botReply = "Error fetching travel info. Try another city.";
+        if (err.response?.status === 404) {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: `❌ No flight data available for ${rawCity} in the test environment. Try: Paris, Madrid, or Amsterdam.` },
+          ]);
+        } else {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: "❌ Error fetching travel info. Try another city." },
+          ]);
+        }
+      }
+      return;
+    }
+
+    // --- Airline Check-in Query ---
+    else if (lowerInput.includes("check in for")) {
+      try {
+        const match = lowerInput.match(/check in for (.+)/);
+        const airline = match?.[1]?.trim(); // e.g. "IB", "LH", "British Airways", "Lufthansa"
+        if (airline) {
+          const checkinRes = await axios.get(`/api/checkin/${encodeURIComponent(airline)}`);
+          if (checkinRes.data?.data?.length) {
+            const links = checkinRes.data.data.map(item => `• ${item.type}: [${item.href}](${item.href})`).join("\n");
+            setMessages((prev) => [
+              ...prev,
+              { sender: "bot", text: `🛫 Check-in links for ${airline}:\n${links}\n\n*All links open in new tabs*` },
+            ]);
+          } else {
+            setMessages((prev) => [
+              ...prev,
+              { sender: "bot", text: `❌ No check-in link found for ${airline}.` },
+            ]);
+          }
+        } else {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: "⚠️ Please provide an airline name or code (e.g., 'check in for British Airways' or 'check in for BA')." },
+          ]);
+        }
+      } catch (err) {
+        console.error("Check-in error:", err.response?.data || err.message);
+        if (err.response?.status === 400) {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: `❌ Invalid airline format. Try: British Airways, BA, Lufthansa, LH, Air France, AF, etc.` },
+          ]);
+        } else {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: "❌ Error fetching check-in info. Try another airline." },
+          ]);
+        }
+      }
+      return;
+    }
+
+    // --- Hotel Query ---
+    else if (/hotels? in (.+)/i.test(userMessage)) {
+      const match = userMessage.match(/hotels? in (.+)/i);
+      const city = normalizeCity(match?.[1] || "");
+
+      if (!city) {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "⚠️ Please provide a valid city (e.g., 'hotels in London')." },
+        ]);
+        return;
+      }
+
+      try {
+        const res = await axios.get(`/api/hotels/${encodeURIComponent(city)}`);
+        
+        if (res.data?.data?.length) {
+          const hotels = res.data.data;
+          let hotelText = `🏨 Hotels in ${city}:\n\n`;
+          
+          hotels.forEach(hotel => {
+            hotelText += `**${hotel.name}** (${hotel.type}) - ${hotel.rating}⭐\n`;
+            hotelText += `💰 ${hotel.price}\n`;
+            hotelText += `🔗 [Book here](${hotel.link})\n\n`;
+          });
+          
+          hotelText += "*All links open in new tabs*";
+          
+          setMessages((prev) => [...prev, { sender: "bot", text: hotelText }]);
+        } else {
+          setMessages((prev) => [
+            ...prev,
+            { sender: "bot", text: `❌ No hotel information found for ${city}. Try major cities like London, Paris, Tokyo, New York, or Dubai.` },
+          ]);
+        }
+      } catch (err) {
+        console.error("Hotel error:", err.response?.data || err.message);
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: `❌ Error fetching hotel data for ${city}. Try major cities like London, Paris, Tokyo, New York, or Dubai.` },
+        ]);
+      }
+      return;
+    }
+
+    // --- Capital City Recognition ---
+    else if (lowerInput.includes("capital") || lowerInput.includes("what is") || lowerInput.includes("where is")) {
+      const isCapitalCity = Object.values(capitalCities).some(capital => 
+        lowerInput.includes(capital.toLowerCase()) || lowerInput.includes(capital.toLowerCase().replace(/\s+/g, ''))
+      );
+      
+      if (isCapitalCity) {
+        const matchedCapital = Object.values(capitalCities).find(capital => 
+          lowerInput.includes(capital.toLowerCase()) || lowerInput.includes(capital.toLowerCase().replace(/\s+/g, ''))
+        );
+        const country = Object.keys(capitalCities).find(country => 
+          capitalCities[country].toLowerCase() === matchedCapital.toLowerCase()
+        );
+        
+        setMessages((prev) => [...prev, { 
+          sender: "bot", 
+          text: `🏛️ ${matchedCapital} is the capital of ${country}! I can help you with:\n• Weather in ${matchedCapital}\n• Travel from ${matchedCapital}\n• Hotels in ${matchedCapital}\n• Airline check-in links` 
+        }]);
+        return;
       }
     }
 
-    setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
-    setInput("");
+    // --- Default fallback ---
+    setMessages((prev) => [...prev, { sender: "bot", text: "I can help you with:\n• Weather information (e.g., 'weather in London')\n• Travel destinations (e.g., 'travel from Paris')\n• Hotel information (e.g., 'hotels in Tokyo')\n• Airline check-in links (e.g., 'check in for BA')\n• Capital city information (e.g., 'what is the capital of France?')" }]);
   };
 
   return (

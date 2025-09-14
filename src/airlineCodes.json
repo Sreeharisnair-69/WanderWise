@@ -1,0 +1,282 @@
+{
+  "BA": "BA",
+  "british airways": "BA",
+  "british air": "BA",
+  "british": "BA",
+  
+  "IB": "IB",
+  "iberia": "IB",
+  "iberia airlines": "IB",
+  
+  "LH": "LH",
+  "lufthansa": "LH",
+  "lufthansa airlines": "LH",
+  
+  "AF": "AF",
+  "air france": "AF",
+  "airfrance": "AF",
+  
+  "AA": "AA",
+  "american airlines": "AA",
+  "american": "AA",
+  
+  "DL": "DL",
+  "delta": "DL",
+  "delta airlines": "DL",
+  
+  "UA": "UA",
+  "united": "UA",
+  "united airlines": "UA",
+  
+  "AC": "AC",
+  "air canada": "AC",
+  "aircanada": "AC",
+  
+  "QF": "QF",
+  "qantas": "QF",
+  "qantas airways": "QF",
+  
+  "SQ": "SQ",
+  "singapore airlines": "SQ",
+  "singapore": "SQ",
+  
+  "EK": "EK",
+  "emirates": "EK",
+  "emirates airlines": "EK",
+  
+  "QR": "QR",
+  "qatar airways": "QR",
+  "qatar": "QR",
+  
+  "TK": "TK",
+  "turkish airlines": "TK",
+  "turkish": "TK",
+  
+  "KL": "KL",
+  "klm": "KL",
+  "klm royal dutch airlines": "KL",
+  
+  "LX": "LX",
+  "swiss": "LX",
+  "swiss international": "LX",
+  
+  "OS": "OS",
+  "austrian": "OS",
+  "austrian airlines": "OS",
+  
+  "SK": "SK",
+  "sas": "SK",
+  "scandinavian airlines": "SK",
+  
+  "AY": "AY",
+  "finnair": "AY",
+  "finnair airlines": "AY",
+  
+  "VS": "VS",
+  "virgin atlantic": "VS",
+  "virgin": "VS",
+  
+  "FR": "FR",
+  "ryanair": "FR",
+  "ryan air": "FR",
+  
+  "U2": "U2",
+  "easyjet": "U2",
+  "easy jet": "U2",
+  
+  "W6": "W6",
+  "wizz air": "W6",
+  "wizz": "W6",
+  
+  "NH": "NH",
+  "ana": "NH",
+  "all nippon airways": "NH",
+  
+  "JL": "JL",
+  "jal": "JL",
+  "japan airlines": "JL",
+  
+  "KE": "KE",
+  "korean air": "KE",
+  "korean": "KE",
+  
+  "CX": "CX",
+  "cathay pacific": "CX",
+  "cathay": "CX",
+  
+  "TG": "TG",
+  "thai airways": "TG",
+  "thai": "TG",
+  
+  "MH": "MH",
+  "malaysia airlines": "MH",
+  "malaysia": "MH",
+  
+  "GA": "GA",
+  "garuda indonesia": "GA",
+  "garuda": "GA",
+  
+  "PR": "PR",
+  "philippine airlines": "PR",
+  "philippine": "PR",
+  
+  "CI": "CI",
+  "china airlines": "CI",
+  "china": "CI",
+  
+  "BR": "BR",
+  "eva air": "BR",
+  "eva": "BR",
+  
+  "CA": "CA",
+  "air china": "CA",
+  "airchina": "CA",
+  
+  "MU": "MU",
+  "china eastern": "MU",
+  "china eastern airlines": "MU",
+  
+  "CZ": "CZ",
+  "china southern": "CZ",
+  "china southern airlines": "CZ",
+  
+  "HU": "HU",
+  "hainan airlines": "HU",
+  "hainan": "HU",
+  
+  "9W": "9W",
+  "jet airways": "9W",
+  "jet": "9W",
+  
+  "AI": "AI",
+  "air india": "AI",
+  "airindia": "AI",
+  
+  "6E": "6E",
+  "indigo": "6E",
+  "indigo airlines": "6E",
+  
+  "SG": "SG",
+  "spicejet": "SG",
+  "spice jet": "SG",
+  
+  "G8": "G8",
+  "go air": "G8",
+  "goair": "G8",
+  
+  "IX": "IX",
+  "air india express": "IX",
+  "air india express airlines": "IX",
+  
+  "S7": "S7",
+  "s7 airlines": "S7",
+  "siberia": "S7",
+  
+  "SU": "SU",
+  "aeroflot": "SU",
+  "aeroflot russian airlines": "SU",
+  
+  "LO": "LO",
+  "lot": "LO",
+  "lot polish airlines": "LO",
+  
+  "OK": "OK",
+  "csa": "OK",
+  "czech airlines": "OK",
+  
+  "TP": "TP",
+  "tap": "TP",
+  "tap air portugal": "TP",
+  
+  "IB": "IB",
+  "iberia": "IB",
+  "iberia airlines": "IB",
+  
+  "VY": "VY",
+  "vueling": "VY",
+  "vueling airlines": "VY",
+  
+  "U2": "U2",
+  "easyjet": "U2",
+  "easy jet": "U2",
+  
+  "FR": "FR",
+  "ryanair": "FR",
+  "ryan air": "FR",
+  
+  "W6": "W6",
+  "wizz air": "W6",
+  "wizz": "W6",
+  
+  "EW": "EW",
+  "eurowings": "EW",
+  "eurowings airlines": "EW",
+  
+  "4U": "4U",
+  "germanwings": "4U",
+  "german wings": "4U",
+  
+  "X3": "X3",
+  "tui fly": "X3",
+  "tui": "X3",
+  
+  "BY": "BY",
+  "tui airways": "BY",
+  "tui airways uk": "BY",
+  
+  "MT": "MT",
+  "thomas cook": "MT",
+  "thomas cook airlines": "MT",
+  
+  "LS": "LS",
+  "jet2": "LS",
+  "jet2.com": "LS",
+  
+  "T3": "T3",
+  "eastern airways": "T3",
+  "eastern": "T3",
+  
+  "BE": "BE",
+  "flybe": "BE",
+  "fly be": "BE",
+  
+  "BZ": "BZ",
+  "blue air": "BZ",
+  "blueair": "BZ",
+  
+  "W9": "W9",
+  "wizz air uk": "W9",
+  "wizz air uk ltd": "W9",
+  
+  "D8": "D8",
+  "norwegian": "D8",
+  "norwegian air": "D8",
+  
+  "DY": "DY",
+  "norwegian air shuttle": "DY",
+  "norwegian shuttle": "DY",
+  
+  "WF": "WF",
+  "wideroe": "WF",
+  "wideroe airlines": "WF",
+  
+  "SK": "SK",
+  "sas": "SK",
+  "scandinavian airlines": "SK",
+  
+  "AY": "AY",
+  "finnair": "AY",
+  "finnair airlines": "AY",
+  
+  "FI": "FI",
+  "icelandair": "FI",
+  "iceland air": "FI",
+  
+  "WF": "WF",
+  "wideroe": "WF",
+  "wideroe airlines": "WF",
+  
+  "WF": "WF",
+  "wideroe": "WF",
+  "wideroe airlines": "WF"
+}

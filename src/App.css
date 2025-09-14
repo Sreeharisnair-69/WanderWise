@@ -1,15 +1,32 @@
-/* Global app background */
+/* Global app background - Tropical Vacation Theme */
 .app {
   min-height: 100vh;
-  background: url("/public/cloudy-bg\ -\ Copy.jpg") no-repeat center center fixed;
-  background-size: cover;
+  background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 25%, #45B7D1 50%, #96CEB4 75%, #FFEAA7 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 0;
   box-sizing: border-box;
   color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(69, 183, 209, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(150, 206, 180, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Glass header with title */
@@ -38,10 +55,13 @@
 /* Main container holding search, weather, and chat */
 .main-container {
   width: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Search bar */
@@ -85,10 +105,58 @@
 .weather-card-wrapper {
   display: flex;
   justify-content: center;
+  margin: 2rem auto;
+  max-width: 600px;
 }
 
 /* Ensure chatbox aligns nicely */
 .chatbox-wrapper {
   display: flex;
   justify-content: center;
+  max-width: 900px;
+  margin: 4rem auto 2rem auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 0;
+  }
+  
+  .main-container {
+    padding: 0 0.5rem;
+  }
+  
+  .weather-card-wrapper {
+    margin: 1rem auto;
+  }
+  
+  .chatbox-wrapper {
+    margin: 2rem auto 1rem auto;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }

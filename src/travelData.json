@@ -1,0 +1,378 @@
+{
+  "london": {
+    "destinations": [
+      "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw", "Copenhagen",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "London to Paris - 1h 20m",
+      "London to Amsterdam - 1h 10m", 
+      "London to Madrid - 2h 15m",
+      "London to New York - 8h 30m",
+      "London to Dubai - 6h 45m"
+    ]
+  },
+  "paris": {
+    "destinations": [
+      "London", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw", "Copenhagen",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "Paris to London - 1h 20m",
+      "Paris to Amsterdam - 1h 15m",
+      "Paris to Madrid - 2h 00m",
+      "Paris to New York - 8h 15m",
+      "Paris to Dubai - 6h 30m"
+    ]
+  },
+  "new york": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver", "Mexico City",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "New York to London - 8h 30m",
+      "New York to Paris - 8h 15m",
+      "New York to Los Angeles - 6h 00m",
+      "New York to Tokyo - 14h 30m",
+      "New York to Dubai - 12h 45m"
+    ]
+  },
+  "madrid": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw", "Copenhagen",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "Madrid to London - 2h 15m",
+      "Madrid to Paris - 2h 00m",
+      "Madrid to Amsterdam - 2h 30m",
+      "Madrid to New York - 8h 45m",
+      "Madrid to Dubai - 7h 15m"
+    ]
+  },
+  "amsterdam": {
+    "destinations": [
+      "London", "Paris", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw", "Copenhagen",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "Amsterdam to London - 1h 10m",
+      "Amsterdam to Paris - 1h 15m",
+      "Amsterdam to Madrid - 2h 30m",
+      "Amsterdam to New York - 8h 45m",
+      "Amsterdam to Dubai - 6h 30m"
+    ]
+  },
+  "tokyo": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "Tokyo to New York - 14h 30m",
+      "Tokyo to London - 12h 15m",
+      "Tokyo to Los Angeles - 11h 30m",
+      "Tokyo to Singapore - 7h 15m",
+      "Tokyo to Seoul - 2h 30m"
+    ]
+  },
+  "sydney": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "Sydney to Los Angeles - 14h 30m",
+      "Sydney to London - 22h 15m",
+      "Sydney to Singapore - 8h 15m",
+      "Sydney to Tokyo - 9h 30m",
+      "Sydney to Dubai - 14h 45m"
+    ]
+  },
+  "dubai": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto"
+    ],
+    "popular_routes": [
+      "Dubai to London - 6h 45m",
+      "Dubai to New York - 12h 45m",
+      "Dubai to Singapore - 7h 30m",
+      "Dubai to Sydney - 14h 45m",
+      "Dubai to Tokyo - 9h 15m"
+    ]
+  },
+  "rome": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw", "Copenhagen",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Rome to London - 2h 30m",
+      "Rome to Paris - 2h 15m",
+      "Rome to New York - 9h 30m",
+      "Rome to Dubai - 5h 45m",
+      "Rome to Athens - 1h 45m"
+    ]
+  },
+  "barcelona": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow", "Copenhagen"
+    ],
+    "popular_routes": [
+      "Barcelona to London - 2h 15m",
+      "Barcelona to Paris - 1h 45m",
+      "Barcelona to New York - 8h 30m",
+      "Barcelona to Dubai - 6h 30m",
+      "Barcelona to Rome - 1h 30m"
+    ]
+  },
+  "istanbul": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Istanbul to London - 4h 15m",
+      "Istanbul to Paris - 3h 30m",
+      "Istanbul to New York - 11h 30m",
+      "Istanbul to Dubai - 4h 15m",
+      "Istanbul to Athens - 1h 30m"
+    ]
+  },
+  "singapore": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Singapore to London - 13h 30m",
+      "Singapore to Tokyo - 7h 15m",
+      "Singapore to Sydney - 8h 15m",
+      "Singapore to Dubai - 7h 30m",
+      "Singapore to Bangkok - 2h 15m"
+    ]
+  },
+  "bangkok": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Bangkok to London - 12h 30m",
+      "Bangkok to Tokyo - 6h 15m",
+      "Bangkok to Singapore - 2h 15m",
+      "Bangkok to Dubai - 6h 30m",
+      "Bangkok to Sydney - 9h 30m"
+    ]
+  },
+  "hong kong": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Hong Kong to London - 12h 45m",
+      "Hong Kong to Tokyo - 4h 15m",
+      "Hong Kong to Singapore - 4h 00m",
+      "Hong Kong to Sydney - 9h 30m",
+      "Hong Kong to Dubai - 8h 15m"
+    ]
+  },
+  "mumbai": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Mumbai to London - 9h 30m",
+      "Mumbai to Dubai - 3h 15m",
+      "Mumbai to Singapore - 5h 30m",
+      "Mumbai to New York - 15h 30m",
+      "Mumbai to Bangkok - 4h 45m"
+    ]
+  },
+  "delhi": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Delhi to London - 8h 45m",
+      "Delhi to Dubai - 3h 30m",
+      "Delhi to Singapore - 5h 45m",
+      "Delhi to New York - 14h 30m",
+      "Delhi to Bangkok - 4h 30m"
+    ]
+  },
+  "toronto": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Vancouver", "Montreal",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Toronto to London - 7h 30m",
+      "Toronto to New York - 1h 45m",
+      "Toronto to Los Angeles - 5h 30m",
+      "Toronto to Tokyo - 13h 30m",
+      "Toronto to Dubai - 12h 45m"
+    ]
+  },
+  "vancouver": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Montreal",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Vancouver to London - 9h 30m",
+      "Vancouver to Los Angeles - 2h 45m",
+      "Vancouver to Tokyo - 10h 30m",
+      "Vancouver to Sydney - 15h 30m",
+      "Vancouver to Dubai - 14h 45m"
+    ]
+  },
+  "copenhagen": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow"
+    ],
+    "popular_routes": [
+      "Copenhagen to London - 1h 45m",
+      "Copenhagen to Paris - 1h 45m",
+      "Copenhagen to New York - 8h 30m",
+      "Copenhagen to Dubai - 6h 30m",
+      "Copenhagen to Tokyo - 11h 30m"
+    ]
+  },
+  "zurich": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow", "Copenhagen"
+    ],
+    "popular_routes": [
+      "Zurich to London - 1h 45m",
+      "Zurich to New York - 8h 45m",
+      "Zurich to Dubai - 6h 15m",
+      "Zurich to Tokyo - 12h 30m",
+      "Zurich to Singapore - 12h 45m"
+    ]
+  },
+  "athens": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow", "Copenhagen"
+    ],
+    "popular_routes": [
+      "Athens to London - 3h 45m",
+      "Athens to Rome - 1h 45m",
+      "Athens to Istanbul - 1h 30m",
+      "Athens to New York - 10h 30m",
+      "Athens to Dubai - 4h 30m"
+    ]
+  },
+  "lisbon": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Edinburgh", "Glasgow", "Copenhagen"
+    ],
+    "popular_routes": [
+      "Lisbon to London - 2h 45m",
+      "Lisbon to Paris - 2h 15m",
+      "Lisbon to New York - 7h 30m",
+      "Lisbon to Dubai - 7h 45m",
+      "Lisbon to Madrid - 1h 15m"
+    ]
+  },
+  "dublin": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Edinburgh", "Glasgow", "Copenhagen"
+    ],
+    "popular_routes": [
+      "Dublin to London - 1h 30m",
+      "Dublin to New York - 7h 30m",
+      "Dublin to Paris - 1h 45m",
+      "Dublin to Dubai - 7h 15m",
+      "Dublin to Boston - 6h 30m"
+    ]
+  },
+  "edinburgh": {
+    "destinations": [
+      "London", "Paris", "Amsterdam", "Madrid", "Rome", "Berlin", "Prague", "Vienna", "Budapest", "Warsaw",
+      "New York", "Los Angeles", "San Francisco", "Chicago", "Miami", "Boston", "Seattle", "Toronto", "Vancouver",
+      "Dubai", "Singapore", "Hong Kong", "Tokyo", "Sydney", "Melbourne", "Auckland", "Cape Town", "Johannesburg",
+      "Istanbul", "Moscow", "Beijing", "Shanghai", "Bangkok", "Jakarta", "Manila", "Seoul", "Osaka", "Kyoto",
+      "Athens", "Barcelona", "Lisbon", "Porto", "Zurich", "Geneva", "Brussels", "Dublin", "Glasgow", "Copenhagen"
+    ],
+    "popular_routes": [
+      "Edinburgh to London - 1h 15m",
+      "Edinburgh to New York - 7h 45m",
+      "Edinburgh to Paris - 1h 45m",
+      "Edinburgh to Dubai - 7h 30m",
+      "Edinburgh to Amsterdam - 1h 30m"
+    ]
+  }
+}
