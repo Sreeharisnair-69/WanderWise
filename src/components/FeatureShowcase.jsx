@@ -16,6 +16,24 @@ function FeatureShowcase() {
       color: 'linear-gradient(135deg, #45B7D1 0%, #96CEB4 100%)'
     },
     {
+      icon: '🏨',
+      title: 'Hotels & Stays',
+      description: 'Find curated hotel options across budget to luxury in top cities worldwide.',
+      color: 'linear-gradient(135deg, #B497FF 0%, #6EE7B7 100%)'
+    },
+    {
+      icon: '🍽️',
+      title: 'Restaurants',
+      description: 'Browse top places to eat by cuisine and budget with easy filters.',
+      color: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)'
+    },
+    {
+      icon: '🚗',
+      title: 'Rental cars',
+      description: 'Find car hire options with typical daily prices and providers per city.',
+      color: 'linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%)'
+    },
+    {
       icon: '🛫',
       title: 'Airline Check-in',
       description: 'Quick access to airline check-in links with support for 80+ major airlines worldwide.',

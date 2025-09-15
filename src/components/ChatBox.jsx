@@ -6,7 +6,7 @@ import cityCodes from "../cityCodes.json";
 
 function ChatBox() {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi! I'm Wander Buddy. Ask me about travel, weather, or airline check-in 🌍✈️" },
+    { sender: "bot", text: "Hi! I'm Wander Buddy. Ask me about weather, travel, hotels, or airline check-in 🌍✈️🏨" },
   ]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
@@ -225,9 +225,58 @@ function ChatBox() {
       return;
     }
 
+    // --- Restaurants Query ---
+    else if (/restaurants? in (.+)/i.test(userMessage)) {
+      const match = userMessage.match(/restaurants? in (.+)/i);
+      const city = normalizeCity(match?.[1] || "");
+
+      if (!city) {
+        setMessages((prev) => [
+          ...prev,
+          { sender: "bot", text: "⚠️ Please provide a valid city (e.g., 'restaurants in Paris')." },
+        ]);
+        return;
+      }
+
+      try {
+        const res = await axios.get(`/api/restaurants/${encodeURIComponent(city)}`);
+        if (res.data?.data?.length) {
+          const lines = res.data.data.map(r => `• ${r.name} (${r.cuisine}) ${r.rating ? `- ${r.rating}⭐` : ""} — ${r.price} — ${r.url}`).join("\n");
+          setMessages((prev) => [...prev, { sender: "bot", text: `🍽️ Restaurants in ${city}:\n${lines}` }]);
+        } else {
+          setMessages((prev) => [...prev, { sender: "bot", text: `❌ No restaurant information found for ${city}.` }]);
+        }
+      } catch (err) {
+        setMessages((prev) => [...prev, { sender: "bot", text: `❌ Error fetching restaurant data for ${city}. Try cities like London, Paris, Tokyo, New York, or Dubai.` }]);
+      }
+      return;
+    }
+
+    // --- Rental Cars Query ---
+    else if (/rental cars? in (.+)/i.test(userMessage) || /car hire in (.+)/i.test(userMessage)) {
+      const match = userMessage.match(/rental cars? in (.+)/i) || userMessage.match(/car hire in (.+)/i);
+      const city = normalizeCity(match?.[1] || "");
+      if (!city) {
+        setMessages((prev) => [...prev, { sender: "bot", text: "⚠️ Please provide a valid city (e.g., 'rental cars in San Francisco')." }]);
+        return;
+      }
+      try {
+        const res = await axios.get(`/api/cars/${encodeURIComponent(city)}`);
+        if (res.data?.data?.length) {
+          const lines = res.data.data.map(c => `• ${c.company}: ${c.pricePerDay} — ${c.vehicle} — ${c.url}`).join("\n");
+          setMessages((prev) => [...prev, { sender: "bot", text: `🚗 Rental cars in ${city}:\n${lines}` }]);
+        } else {
+          setMessages((prev) => [...prev, { sender: "bot", text: `❌ No rental car data found for ${city}.` }]);
+        }
+      } catch (err) {
+        setMessages((prev) => [...prev, { sender: "bot", text: `❌ Error fetching rental car data for ${city}. Try cities like London, Paris, San Francisco, or Singapore.` }]);
+      }
+      return;
+    }
+
   
     // --- Default fallback ---
-    setMessages((prev) => [...prev, { sender: "bot", text: "I can help you with:\n• Weather information (e.g., 'weather in London')\n• Travel destinations (e.g., 'travel from Paris')\n• Hotel information (e.g., 'hotels in Tokyo')\n• Airline check-in links (e.g., 'check in for BA')\n• Capital city information (e.g., 'what is the capital of France?')" }]);
+    setMessages((prev) => [...prev, { sender: "bot", text: "I can help you with:\n• Weather (e.g., 'weather in London')\n• Travel destinations (e.g., 'travel from Paris' or 'travel from France')\n• Hotels (e.g., 'hotels in Tokyo')\n• Airline check-in links (e.g., 'check in for BA')" }]);
   };
 
   return (
