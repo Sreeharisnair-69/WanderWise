@@ -4,6 +4,7 @@ import './Header.css';
 function Header() {
   const [showAuth, setShowAuth] = useState(false);
   const [mode, setMode] = useState('signin');
+  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState(null);
 
   React.useEffect(() => {

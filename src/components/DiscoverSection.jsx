@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import './DiscoverSection.css';
 
 function DiscoverSection({ externalCity }) {
@@ -13,7 +13,7 @@ function DiscoverSection({ externalCity }) {
   const pageSize = 4;
   const requestIdRef = useRef(0);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const id = ++requestIdRef.current;
     setLoading(true);
     setError('');
@@ -32,12 +32,11 @@ function DiscoverSection({ externalCity }) {
       setError(e.message);
     }
     setLoading(false);
-  };
+  }, [activeTab, city]);
 
   useEffect(() => {
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab, city]);
+  }, [fetchData]);
 
   // Sync external city from parent search
   useEffect(() => {

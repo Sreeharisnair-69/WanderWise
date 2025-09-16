@@ -11,12 +11,7 @@
     { "src": "/api/hotels/(.*)", "dest": "/api/hotels.js" },
     { "src": "/api/restaurants/(.*)", "dest": "/api/restaurants.js" },
     { "src": "/.*", "dest": "/index.html" }
-  ],
-  "env": {
-    "WEATHER_API_KEY": "@weather_api_key",
-    "AMADEUS_CLIENT_ID": "@amadeus_client_id",
-    "AMADEUS_CLIENT_SECRET": "@amadeus_client_secret"
-  }
+  ]
 }
 
 
