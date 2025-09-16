@@ -43,7 +43,7 @@ function DiscoverSection({ externalCity }) {
     if (externalCity && externalCity.trim() && externalCity.toLowerCase() !== city.toLowerCase()) {
       setCity(externalCity.toLowerCase());
     }
-  }, [externalCity]);
+  }, [externalCity, city]);
 
   const renderCard = (item, idx) => {
     const name = item.name || item.title;
