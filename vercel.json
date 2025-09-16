@@ -5,6 +5,7 @@
     { "src": "package.json", "use": "@vercel/static-build" }
   ],
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/api/weather/(.*)", "dest": "/api/weather.js" },
     { "src": "/api/travel/(.*)", "dest": "/api/travel.js" },
     { "src": "/api/checkin/(.*)", "dest": "/api/checkin.js" },
